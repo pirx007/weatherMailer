@@ -1,4 +1,5 @@
 import requests
+import smtplib
 
 def get_emails():
     emails = {}
@@ -44,15 +45,29 @@ def get_weather_forecast():
     forecast += description + ' with a high of ' + str(int(temp_max))
     forecast += ' and a low of ' + str(int(temp_min))
 
-    print(forecast)
+    return forecast
+
+
+def send_emails(emails, schedule, forecast):
+    # Connect to the SMTP server
+    server = smtplib.SMTP('smtp.gmail.com', '587')
+
+    # Start TLS encryption
+    server.starttls()
+
+    #Login
+    password = input("Pass?")
+    email = 'zdjjeden@gmail.com'
+    server.login('zdjjeden@gmail.com', password)
+
+    server.sendmail(email, email, 'test msg')
+    server.quit()
 
 def main():
     emails = get_emails()
-    print(emails)
-
     schedule = get_schedule()
-    print(schedule)
-
-    get_weather_forecast()
+    forecast = get_weather_forecast()
+    print(forecast)
+    send_emails(emails, schedule, forecast)
 
 main()
