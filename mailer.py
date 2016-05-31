@@ -22,3 +22,11 @@ def get_schedule():
     return schedule
 
 
+def main():
+    emails = get_emails()
+    print(emails)
+    schedule = get_schedule()
+    print(schedule)
+
+
+main()
