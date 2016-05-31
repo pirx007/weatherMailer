@@ -59,8 +59,8 @@ def send_emails(emails, schedule, forecast):
     password = input("Pass?")
     email = 'zdjjeden@gmail.com'
     server.login('zdjjeden@gmail.com', password)
-
-    server.sendmail(email, email, 'test msg')
+    print('test msg ' + forecast)
+    server.sendmail(email, email, 'test3')
     server.quit()
 
 def main():
