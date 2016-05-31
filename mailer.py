@@ -1,9 +1,13 @@
-emails = []
-email_file = open('emails.txt', 'r')
+emails = {}
 
-for line in email_file:
-    line = line.strip()
-    emails.append(line)
+try:
+    email_file = open('emails2.txt', 'r')
+
+    for line in email_file:
+        (email, name) = line.split(',')
+        emails[email] = name
+except FileNotFoundError as err:
+    print(err)
 
 print(emails)
 
