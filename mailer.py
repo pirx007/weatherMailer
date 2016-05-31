@@ -1,3 +1,5 @@
+import requests
+
 def get_emails():
     emails = {}
 
@@ -25,8 +27,8 @@ def get_schedule():
 def main():
     emails = get_emails()
     print(emails)
+
     schedule = get_schedule()
     print(schedule)
-
 
 main()
