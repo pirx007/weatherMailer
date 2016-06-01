@@ -35,13 +35,10 @@ def get_weather_forecast():
     #print(weather_json)
 
     description = weather_json['weather'][0]['description']
-    print(description)
     temp_min = weather_json['main']['temp_min']
     temp_max = weather_json['main']['temp_max']
-    print(temp_min)
-    print(temp_max)
 
-    forecast = 'Forecast for today:'
+    forecast = 'Forecast for today, '
     forecast += description + ' with a high of ' + str(int(temp_max))
     forecast += ' and a low of ' + str(int(temp_min))
 
@@ -59,15 +56,14 @@ def send_emails(emails, schedule, forecast):
     password = input("Pass?")
     email = 'zdjjeden@gmail.com'
     server.login('zdjjeden@gmail.com', password)
-
-    server.sendmail(email, email, 'test msg')
+    server.sendmail(email, email, forecast)
     server.quit()
 
 def main():
     emails = get_emails()
     schedule = get_schedule()
     forecast = get_weather_forecast()
-    print(forecast)
-    send_emails(emails, schedule, forecast)
+    #print(forecast)
+    send_emails(emails, schedule, str(forecast))
 
 main()
